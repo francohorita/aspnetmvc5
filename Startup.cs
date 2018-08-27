@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using aspnetmvc5.Controllers;
 using Microsoft.EntityFrameworkCore;
 using Pomelo.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace aspnetmvc5
 {
@@ -27,6 +28,9 @@ namespace aspnetmvc5
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            Console.WriteLine("Start!");
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -36,15 +40,17 @@ namespace aspnetmvc5
 
             services.AddCors();
 
-            services.AddDbContext<IronManContext>(options =>
+            services.AddDbContext<FacturasContext>(options =>
                 options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            loggerFactory.AddConsole();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -65,6 +71,11 @@ namespace aspnetmvc5
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            /*xception has occurred: CLR/System.InvalidOperationException
+            An exception of type 'System.InvalidOperationException' occurred in Microsoft.Extensions.DependencyInjection.dll but was not handled in user code: 'Cannot resolve scoped service 'aspnetmvc5.Controllers.FacturasContext' from root provider.'*/
+            var DB = app.ApplicationServices.GetRequiredService<FacturasContext>();
+            DB.Database.EnsureCreated();
         }
     }
 }
