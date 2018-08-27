@@ -9,6 +9,9 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using aspnetmvc5.Controllers;
+using Microsoft.EntityFrameworkCore;
+using Pomelo.EntityFrameworkCore;
 
 namespace aspnetmvc5
 {
@@ -31,6 +34,10 @@ namespace aspnetmvc5
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddCors();
+
+            services.AddDbContext<IronManContext>(options =>
+                options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
