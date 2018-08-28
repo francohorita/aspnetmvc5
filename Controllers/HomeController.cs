@@ -15,11 +15,11 @@ namespace aspnetmvc5.Controllers
             return View();
         }
 
-        public IActionResult About()
+        public IActionResult About([FromServices] FacturasContext DB)
         {
             ViewData["Message"] = "Your application description page.";
 
-            return View();
+            return View(model: DB.facturas.ToList());
         }
 
         public IActionResult Contact()
