@@ -10,8 +10,15 @@ namespace aspnetmvc5.Controllers
 {
     public class HomeController : Controller
     {
+        
         public IActionResult Index()
         {
+            /*https://www.c-sharpcorner.com/article/configuration-in-asp-net-core/
+            https://www.nuget.org/packages/MySql.Data.EntityFrameworkCore
+            https://dev.mysql.com/doc/connector-net/en/connector-net-entityframework-core.html
+            http://www.entityframeworktutorial.net/efcore/install-entity-framework-core.aspx*/
+            Console.WriteLine("Start!");
+
             return View();
         }
 
@@ -19,7 +26,7 @@ namespace aspnetmvc5.Controllers
         {
             ViewData["Message"] = "Your application description page.";
 
-            return View(model: DB.facturas.ToList());
+            return View();
         }
 
         public IActionResult Contact()

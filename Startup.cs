@@ -11,7 +11,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using aspnetmvc5.Controllers;
 using Microsoft.EntityFrameworkCore;
-using Pomelo.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace aspnetmvc5
@@ -39,9 +38,6 @@ namespace aspnetmvc5
             });
 
             services.AddCors();
-
-            services.AddDbContext<FacturasContext>(options =>
-                options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -72,10 +68,6 @@ namespace aspnetmvc5
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            /*xception has occurred: CLR/System.InvalidOperationException
-            An exception of type 'System.InvalidOperationException' occurred in Microsoft.Extensions.DependencyInjection.dll but was not handled in user code: 'Cannot resolve scoped service 'aspnetmvc5.Controllers.FacturasContext' from root provider.'*/
-            var DB = app.ApplicationServices.GetRequiredService<FacturasContext>();
-            DB.Database.EnsureCreated();
         }
     }
 }
