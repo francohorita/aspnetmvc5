@@ -10,6 +10,11 @@ namespace aspnetmvc5.Controllers
 {
     public class HomeController : Controller
     {
+        private void SetViewDatas()
+        {
+            ViewData["AppName"] = "FNF";
+        }
+
         public IActionResult Index()
         {
             var dbContext = new Sql10253958Context();
@@ -18,13 +23,17 @@ namespace aspnetmvc5.Controllers
             {
                 System.Console.WriteLine($"ID:{f.Id} Fecha:{f.Fecha} Cliente:{f.Cliente} Usuario:{f.Usuario}");
             }
-            
+
+            SetViewDatas();
+
             return View();
         }
 
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
+
+            SetViewDatas();
 
             return View();
         }
@@ -33,11 +42,15 @@ namespace aspnetmvc5.Controllers
         {
             ViewData["Message"] = "Your contact page.";
 
+            SetViewDatas();
+
             return View();
         }
 
         public IActionResult Privacy()
         {
+            SetViewDatas();
+            
             return View();
         }
 
