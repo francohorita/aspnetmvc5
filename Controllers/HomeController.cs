@@ -22,12 +22,19 @@ namespace aspnetmvc5.Controllers
             return View();
         }
 
-        public IActionResult About()
+        public IActionResult Login()
         {
             ViewData["Message"] = "Your application description page.";
 
             SetViewDatas();
 
+            return View();
+        }
+        
+        public IActionResult Register()
+        {
+            SetViewDatas();
+            
             return View();
         }
 
@@ -37,13 +44,6 @@ namespace aspnetmvc5.Controllers
 
             SetViewDatas();
 
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            SetViewDatas();
-            
             return View();
         }
 
