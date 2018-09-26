@@ -24,7 +24,7 @@ namespace aspnetmvc5.Controllers
 
         public IActionResult Login()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "Por ingrese sus datos.";
 
             SetViewDatas();
 
