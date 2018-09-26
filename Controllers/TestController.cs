@@ -1,17 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using aspnetmvc5.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace aspnetmvc5.Controllers
 {
     public class TestController : DefaultController
     {
-        private void SetViewDatas()
-        {
-            ViewData["AppName"] = "FNF";
-        }
-
         public IActionResult Prueba()
         {
             SetViewDatas();
+            
+            Usuarios usuario = new Usuarios();
+            
+            ViewData["Edad"] = usuario.CalcularEdad();
 
             return View();
         }
