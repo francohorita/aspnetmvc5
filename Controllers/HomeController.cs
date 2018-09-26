@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Linq;
+﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using aspnetmvc5.Models;
 
@@ -10,11 +9,11 @@ namespace aspnetmvc5.Controllers
 
         public IActionResult Index()
         {
-            var dbContext = new Sql10253958Context();
-            var facturas = dbContext.Facturas.ToList();
-            foreach (var f in facturas)
+            var dbContext = new MySqlDbContext();
+            var carreras = dbContext.Carreras.ToList();
+            foreach (var c in carreras)
             {
-                System.Console.WriteLine($"ID:{f.Id} Fecha:{f.Fecha} Cliente:{f.Cliente} Usuario:{f.Usuario}");
+                System.Console.WriteLine($"ID:{c.Id} Nombre:{c.Nombre} Creado:{c.Creado}");
             }
 
             SetViewDatas();

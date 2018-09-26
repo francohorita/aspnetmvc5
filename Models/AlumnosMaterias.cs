@@ -3,12 +3,11 @@ using System.Collections.Generic;
 
 namespace aspnetmvc5.Models
 {
-    public partial class Facturas
+    public partial class AlumnosMaterias
     {
         public int Id { get; set; }
-        public DateTime Fecha { get; set; }
-        public int Cliente { get; set; }
-        public int Usuario { get; set; }
+        public int UsuarioId { get; set; }
+        public int MateriaId { get; set; }
         public DateTime Creado { get; set; }
     }
 }
