@@ -9,6 +9,7 @@ namespace aspnetmvc5.Controllers
 
         public IActionResult Index()
         {
+            ViewData["Title"] = "Sistema FNF";
             var dbContext = new MySqlDbContext();
             var carreras = dbContext.Carreras.ToList();
             foreach (var c in carreras)
@@ -23,6 +24,7 @@ namespace aspnetmvc5.Controllers
 
         public IActionResult Login()
         {
+            ViewData["Title"] = "Login";
             ViewData["Message"] = "Por ingrese sus datos.";
 
             SetViewDatas();
@@ -32,6 +34,7 @@ namespace aspnetmvc5.Controllers
         
         public IActionResult Register()
         {
+            ViewData["Title"] = "Registro";
             SetViewDatas();
             
             return View();
@@ -39,6 +42,7 @@ namespace aspnetmvc5.Controllers
 
         public IActionResult Contact()
         {
+            ViewData["Title"] = "Contacto";
             ViewData["Message"] = "Your contact page.";
 
             SetViewDatas();
