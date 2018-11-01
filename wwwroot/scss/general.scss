@@ -1,0 +1,32 @@
+@import "config";
+
+html, body{
+    background-color: $background-color;
+    width: $root-width;
+    font-family: $font-family;
+}
+
+.navbar-icon{
+    display: inline-block;
+    line-height: inherit;
+    color: #FFF;
+    margin: 0 10px 0 10px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.bg-nav-custom{
+    background-color: $main-color;
+}
+
+.btn-shinobu {
+    color: #fff;
+    background-color: $main-color;
+    border-color: $main-color;
+}
+
+@media (max-width: 1200px) {
+    html, body{
+        color: $color;
+    }
+}

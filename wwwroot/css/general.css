@@ -1,0 +1,32 @@
+html, body {
+  background-color: #FFF;
+  width: 100%;
+  font-family: "Roboto", sans-serif;
+}
+
+.navbar-icon {
+  display: inline-block;
+  line-height: inherit;
+  color: #FFF;
+  margin: 0 10px 0 10px;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.bg-nav-custom {
+  background-color: #960102;
+}
+
+.btn-shinobu {
+  color: #fff;
+  background-color: #960102;
+  border-color: #960102;
+}
+
+@media (max-width: 1200px) {
+  html, body {
+    color: #333;
+  }
+}
+
+/*# sourceMappingURL=general.css.map */

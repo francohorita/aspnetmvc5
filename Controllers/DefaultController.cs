@@ -6,6 +6,11 @@ namespace aspnetmvc5.Controllers
 {
     public class DefaultController : Controller
     {
+        protected void CheckedLoggedUser()
+        {
+            
+        }
+        
         protected void SetViewDatas()
         {
             ViewData["AppName"] = "FNF";

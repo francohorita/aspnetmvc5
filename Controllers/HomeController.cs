@@ -9,8 +9,10 @@ namespace aspnetmvc5.Controllers
 
         public IActionResult Index()
         {
-            ViewData["Title"] = "Sistema FNF";
+            ViewData["Title"] = "Sistema";
+            
             var dbContext = new MySqlDbContext();
+            
             var carreras = dbContext.Carreras.ToList();
             foreach (var c in carreras)
             {
