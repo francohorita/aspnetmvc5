@@ -1,17 +1,17 @@
 ﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using aspnetmvc5.Models;
+using Newtonsoft.Json;
 
 namespace aspnetmvc5.Controllers
 {
     public class HomeController : DefaultController
     {
+        private readonly MySqlDbContext dbContext = new MySqlDbContext();
 
-        public IActionResult Index()
+        public ActionResult Index()
         {
             ViewData["Title"] = "Sistema";
-            
-            var dbContext = new MySqlDbContext();
             
             var carreras = dbContext.Carreras.ToList();
             foreach (var c in carreras)
@@ -24,39 +24,26 @@ namespace aspnetmvc5.Controllers
             return View();
         }
 
-        public IActionResult Login()
+        public ActionResult Home()
         {
-            ViewData["Title"] = "Login";
-            ViewData["Message"] = "Por ingrese sus datos.";
+            var loginUser = dbContext.Usuarios.FirstOrDefault(usr => usr.Mail == Request.Form["email"] && usr.Password == Request.Form["password"]);
 
-            SetViewDatas();
+            if (loginUser != null)
+            {
+                DefaultController.miUsuario.Mail = loginUser.Mail;
+                ViewData["Title"] = "Contacto";
+                ViewData["Message"] = "Your contact page.";
 
-            return View();
-        }
-        
-        public IActionResult Register()
-        {
-            ViewData["Title"] = "Registro";
-            SetViewDatas();
+                SetViewDatas();
+
+                return View();
+                
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
             
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Title"] = "Contacto";
-            ViewData["Message"] = "Your contact page.";
-
-            SetViewDatas();
-
-            return View();
-        }
-
-        public IActionResult Test()
-        {
-            SetViewDatas();
-            
-            return View();
         }
 
     }

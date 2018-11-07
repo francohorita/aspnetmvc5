@@ -12,6 +12,7 @@ namespace aspnetmvc5.Models
         public int Dni { get; set; }
         public int Legajo { get; set; }
         public string Mail { get; set; }
+        public string Password { get; set; }
         public DateTime Fechanac { get; set; }
         public DateTime Ingreso { get; set; }
         public float Sueldo { get; set; }
@@ -21,5 +22,7 @@ namespace aspnetmvc5.Models
         {
             return 20;
         }
+        
+        
     }
 }

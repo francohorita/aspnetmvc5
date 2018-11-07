@@ -168,6 +168,11 @@ namespace aspnetmvc5.Models
                     .IsRequired()
                     .HasColumnName("mail")
                     .HasColumnType("text");
+                
+                entity.Property(e => e.Password)
+                    .IsRequired()
+                    .HasColumnName("password")
+                    .HasColumnType("text");
 
                 entity.Property(e => e.Nombre)
                     .IsRequired()

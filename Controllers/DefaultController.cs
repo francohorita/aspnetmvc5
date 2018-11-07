@@ -6,10 +6,8 @@ namespace aspnetmvc5.Controllers
 {
     public class DefaultController : Controller
     {
-        protected void CheckedLoggedUser()
-        {
-            
-        }
+
+        public static Usuarios miUsuario = new Usuarios();
         
         protected void SetViewDatas()
         {
