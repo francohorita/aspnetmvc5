@@ -14,13 +14,13 @@ html, body {
 }
 
 .bg-nav-custom {
-  background-color: #960102;
+  background-color: #6b6ace;
 }
 
-.btn-shinobu {
+.btn-custom {
   color: #fff;
-  background-color: #960102;
-  border-color: #960102;
+  background-color: #6b6ace;
+  border-color: #6b6ace;
 }
 
 @media (max-width: 1200px) {
