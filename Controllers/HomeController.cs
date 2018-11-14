@@ -1,7 +1,7 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using aspnetmvc5.Models;
-using Newtonsoft.Json;
 
 namespace aspnetmvc5.Controllers
 {
@@ -12,31 +12,30 @@ namespace aspnetmvc5.Controllers
         public ActionResult Index()
         {
             ViewData["Title"] = "Sistema";
-            
-            var carreras = dbContext.Carreras.ToList();
-            foreach (var c in carreras)
-            {
-                System.Console.WriteLine($"ID:{c.Id} Nombre:{c.Nombre} Creado:{c.Creado}");
-            }
 
             SetViewDatas();
 
             return View();
         }
 
-        public ActionResult Home()
+        public ActionResult Carreras()
         {
             var loginUser = dbContext.Usuarios.FirstOrDefault(usr => usr.Mail == Request.Form["email"] && usr.Password == Request.Form["password"]);
 
             if (loginUser != null)
             {
                 DefaultController.miUsuario.Mail = loginUser.Mail;
-                ViewData["Title"] = "Contacto";
-                ViewData["Message"] = "Your contact page.";
+                ViewData["Title"] = "Carreras";
+                
+                List<Carreras> carreras = dbContext.Carreras.ToList();
+                /*foreach (var c in carreras)
+                {
+                    System.Console.WriteLine($"ID:{c.Id} Nombre:{c.Nombre} Creado:{c.Creado}");
+                }*/
 
                 SetViewDatas();
 
-                return View();
+                return View(carreras);
                 
             }
             else

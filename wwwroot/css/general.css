@@ -23,6 +23,14 @@ html, body {
   border-color: #6b6ace;
 }
 
+footer {
+  height: 50px;
+  line-height: 50px;
+  background-color: #eee;
+  color: #333;
+  font-size: 12px;
+}
+
 @media (max-width: 1200px) {
   html, body {
     color: #333;

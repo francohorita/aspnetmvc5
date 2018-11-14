@@ -11,7 +11,7 @@ namespace aspnetmvc5.Controllers
         
         protected void SetViewDatas()
         {
-            ViewData["AppName"] = "FNF";
+            ViewData["AppName"] = "Doggo HS";
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

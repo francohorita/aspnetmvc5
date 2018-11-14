@@ -25,6 +25,14 @@ html, body{
     border-color: $main-color;
 }
 
+footer{
+    height: 50px;
+    line-height: 50px;
+    background-color: #eee;
+    color: $color;
+    font-size: 12px;
+}
+
 @media (max-width: 1200px) {
     html, body{
         color: $color;
