@@ -16,13 +16,6 @@ namespace aspnetmvc5.Models
         public DateTime Fechanac { get; set; }
         public DateTime Ingreso { get; set; }
         public float Sueldo { get; set; }
-        public DateTime Creado { get; set; }
-
-        public int CalcularEdad()
-        {
-            return 20;
-        }
-        
-        
+        public DateTime Creado { get; set; } 
     }
 }
