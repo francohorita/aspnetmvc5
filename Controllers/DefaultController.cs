@@ -12,6 +12,7 @@ namespace aspnetmvc5.Controllers
         protected void SetViewDatas()
         {
             ViewData["AppName"] = "Doggo HS";
+            ViewData["Authors"] = "Horita, Litardo & Ravinale";
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

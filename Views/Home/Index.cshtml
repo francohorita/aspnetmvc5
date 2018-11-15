@@ -1,8 +1,10 @@
 ﻿@model Usuarios
 
+<link rel="stylesheet" href="~/css/login.css" asp-append-version="true"/>
+
 <main class="container text-center">
 
-    <form class="form-signin" action="Home/Carreras" method="post">
+    <form class="form-signin" action="Home/Login" method="post">
 
         <img class="mb-4" src="img/logo-color.png" alt="" width="80">
         <h1 class="h3 mb-3 font-weight-normal">Ingresar</h1>
@@ -12,7 +14,7 @@
         <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
 
         <button class="btn btn-lg btn-custom btn-block" type="submit">Iniciar sesión</button>
-        <p class="mt-5 mb-3 text-muted">@ViewData["Title"] - &copy; 2018</p>
+        <p class="mt-5 mb-3 text-muted"><strong>@ViewData["AppName"]</strong> <br> @ViewData["Authors"] <br> <strong>&copy; 2018</strong></p>
 
     </form>
     
