@@ -12,20 +12,20 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
 
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Carreras</a>
+        <li class="nav-item @((string) ViewData["Title"]=="Carreras" ? "active" : "")">
+          <a class="nav-link" href="~/Navigation/Carreras">Carreras</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Materias</a>
+        <li class="nav-item @((string) ViewData["Title"]=="Materias" ? "active" : "")">
+          <a class="nav-link" href="~/Navigation/Materias">Materias</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Profesores</a>
+        <li class="nav-item @((string) ViewData["Title"]=="Profesores" ? "active" : "")">
+          <a class="nav-link" href="~/Navigation/Profesores">Profesores</a>
         </li>
       </ul>
 
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <i class="fas fa-sign-out-alt navbar-icon" style=""></i>
+          <a class="nav-link" href="~/Action/Logout"><i class="fas fa-sign-out-alt navbar-icon"></i></a>
         </li>
       </ul>
 

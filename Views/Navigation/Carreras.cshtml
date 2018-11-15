@@ -1,0 +1,34 @@
+﻿@model List<Carreras>
+
+<main class="container">
+    <h1 class="mt-5">@ViewData["Title"]</h1>
+    <hr>
+    
+    <table id="dataTable" class="table table-striped table-bordered" style="width: 100%">
+        
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Id</th>
+        </tr>
+        </thead>
+
+        <tfoot>
+        <tr>
+            <th>Nombre</th>
+            <th>Id</th>
+        </tr>
+        </tfoot>
+
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Nombre</td>
+                <td>@item.Id</td>
+            </tr>
+        }
+        </tbody>
+
+    </table>
+</main>

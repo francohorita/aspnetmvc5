@@ -1,4 +1,4 @@
-﻿@model List<Carreras>
+﻿@model List<Usuarios>
 
 <main class="container">
     <h1 class="mt-5">@ViewData["Title"]</h1>
@@ -9,14 +9,18 @@
         <thead>
         <tr>
             <th>Nombre</th>
-            <th>Creado</th>
+            <th>Apellido</th>
+            <th>Legajo</th>
+            <th>Mail</th>
         </tr>
         </thead>
 
         <tfoot>
         <tr>
             <th>Nombre</th>
-            <th>Creado</th>
+            <th>Apellido</th>
+            <th>Legajo</th>
+            <th>Mail</th>
         </tr>
         </tfoot>
 
@@ -25,7 +29,9 @@
         {
             <tr>
                 <td>@item.Nombre</td>
-                <td>@item.Creado</td>
+                <td>@item.Apellido</td>
+                <td>@item.Legajo</td>
+                <td>@item.Mail</td>
             </tr>
         }
         </tbody>
