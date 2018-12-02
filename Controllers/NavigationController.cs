@@ -92,5 +92,46 @@ namespace aspnetmvc5.Controllers
 
         }
         
+        public ActionResult CreateMateria()
+        {
+
+            ViewData["Title"] = "Crear";
+            ViewData["SubTitle"] = "Nueva Materia";
+            SetViewDatas();
+
+            return SessionUser.Mail == null ? (ActionResult) RedirectToAction("Login", "Navigation") : View();
+
+        }
+        
+        public ActionResult EditMateria()
+        {
+
+            ViewData["Title"] = "Editar";
+            ViewData["SubTitle"] = "Materia";
+            SetViewDatas();
+            
+            Materias materiaToEdit;
+            
+            materiaToEdit = DbContext.Materias.Find(Convert.ToInt32(Request.Query["Id"]));
+
+            return SessionUser.Mail == null ? (ActionResult) RedirectToAction("Login", "Navigation") : View(materiaToEdit);
+
+        }
+        
+        public ActionResult ShowMateria()
+        {
+
+            ViewData["Title"] = "View";
+            ViewData["SubTitle"] = "Materia";
+            SetViewDatas();
+            
+            Materias materiaToView;
+            
+            materiaToView = DbContext.Materias.Find(Convert.ToInt32(Request.Query["Id"]));
+
+            return SessionUser.Mail == null ? (ActionResult) RedirectToAction("Login", "Navigation") : View(materiaToView);
+
+        }
+        
     }
 }
