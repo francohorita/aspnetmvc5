@@ -48,5 +48,17 @@ namespace aspnetmvc5.Controllers
             return SessionUser.Mail == null ? (ActionResult) RedirectToAction("Login", "Navigation") : View(profesoresList);
 
         }
+        
+        public ActionResult CrearCarrera()
+        {
+
+            ViewData["Title"] = "Crear";
+            ViewData["SubTitle"] = "Nueva Carrera";
+            SetViewDatas();
+
+            return SessionUser.Mail == null ? (ActionResult) RedirectToAction("Login", "Navigation") : View();
+
+        }
+        
     }
 }

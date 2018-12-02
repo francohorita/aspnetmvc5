@@ -7,7 +7,7 @@
             <h1 class="mt-5">@ViewData["Title"]</h1>
         </div>
         <div class="col-sm-4">
-            <a class="btn btn-primary float-right mt-5" href="~/Navigation/AddCarreras"><i class="fas fa-plus-circle"></i><span> Crear</span></a>
+            <a class="btn btn-primary float-right mt-5" href="~/Navigation/CrearCarrera"><i class="fas fa-plus-circle"></i><span> Crear</span></a>
         </div>
     </div>
 
@@ -38,9 +38,9 @@
                 <td>@item.Nombre</td>
                 <td>@item.Id</td>
                 <td>
-                    <a href="~/ActionCarreras/ShowCarrera?id=@item.Id" class="btn btn-light"><i class="fa fa-eye"></i></a>
-                    <a href="~/ActionCarreras/EditCarrera?id=@item.Id" class="btn btn-light"><i class="fa fa-pen"></i></a>
-                    <a href="~/ActionCarreras/DeleteCarrera?id=@item.Id" class="btn btn-ligh-danger" onclick="return confirm('¿Seguro que desea eliminar el registro?')"><i class="fa fa-trash-alt"></i></a>
+                    <a href="~/ActionCarreras/Show?id=@item.Id" class="btn btn-light"><i class="fa fa-eye"></i></a>
+                    <a href="~/ActionCarreras/Edit?id=@item.Id" class="btn btn-light"><i class="fa fa-pen"></i></a>
+                    <a href="~/ActionCarreras/Delete?id=@item.Id" class="btn btn-ligh-danger" onclick="return confirm('¿Seguro que desea eliminar el registro?')"><i class="fa fa-trash-alt"></i></a>
                 </td>
             </tr>
         }
