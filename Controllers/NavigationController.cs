@@ -77,5 +77,20 @@ namespace aspnetmvc5.Controllers
 
         }
         
+        public ActionResult ShowCarrera()
+        {
+
+            ViewData["Title"] = "View";
+            ViewData["SubTitle"] = "Carrera";
+            SetViewDatas();
+            
+            Carreras carreraToView;
+            
+            carreraToView = DbContext.Carreras.Find(Convert.ToInt32(Request.Query["Id"]));
+
+            return SessionUser.Mail == null ? (ActionResult) RedirectToAction("Login", "Navigation") : View(carreraToView);
+
+        }
+        
     }
 }
