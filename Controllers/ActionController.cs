@@ -8,12 +8,13 @@ namespace aspnetmvc5.Controllers
         [HttpPost]
         public ActionResult Login()
         {
-            var loginUser = dbContext.Usuarios.First(
+            var loginUser = DbContext.Usuarios.First(
                 user => user.Mail == Request.Form["email"] && user.Password == Request.Form["password"]);
 
             if (loginUser != null)
             {
-                miUsuario.Mail = loginUser.Mail;
+                SessionUser.Mail = loginUser.Mail;
+                SessionUser.Tipo = loginUser.Tipo;
                 
                 return RedirectToAction("Carreras", "Navigation");   
             }
@@ -26,7 +27,7 @@ namespace aspnetmvc5.Controllers
         
         public ActionResult Logout()
         {
-            miUsuario.Mail = null;
+            SessionUser.Mail = null;
             
             return RedirectToAction("Login", "Navigation");
         }

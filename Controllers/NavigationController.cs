@@ -19,9 +19,9 @@ namespace aspnetmvc5.Controllers
             ViewData["Title"] = "Carreras";
             SetViewDatas();
             
-            var carrerasList = dbContext.Carreras.ToList();
+            var carrerasList = DbContext.Carreras.ToList();
 
-            return miUsuario.Mail == null ? (ActionResult) RedirectToAction("Login", "Navigation") : View(carrerasList);
+            return SessionUser.Mail == null ? (ActionResult) RedirectToAction("Login", "Navigation") : View(carrerasList);
 
         }
         
@@ -30,9 +30,9 @@ namespace aspnetmvc5.Controllers
             ViewData["Title"] = "Materias";
             SetViewDatas();
             
-            var materialList = dbContext.Materias.ToList();
+            var materialList = DbContext.Materias.ToList();
 
-            return miUsuario.Mail == null ? (ActionResult) RedirectToAction("Login", "Navigation") : View(materialList);
+            return SessionUser.Mail == null ? (ActionResult) RedirectToAction("Login", "Navigation") : View(materialList);
 
         }
         
@@ -43,9 +43,9 @@ namespace aspnetmvc5.Controllers
             SetViewDatas();
             
             /*1 admin 2 estudiante 3 profesor*/
-            var profesoresList = dbContext.Usuarios.Where(user => user.Tipo == 3).ToList();
+            var profesoresList = DbContext.Usuarios.Where(user => user.Tipo == 3).ToList();
 
-            return miUsuario.Mail == null ? (ActionResult) RedirectToAction("Login", "Navigation") : View(profesoresList);
+            return SessionUser.Mail == null ? (ActionResult) RedirectToAction("Login", "Navigation") : View(profesoresList);
 
         }
     }

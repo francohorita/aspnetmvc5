@@ -6,8 +6,8 @@ namespace aspnetmvc5.Controllers
 {
     public class DefaultController : Controller
     {
-        protected static Usuarios miUsuario = new Usuarios();
-        protected readonly MySqlDbContext dbContext = new MySqlDbContext();
+        protected static readonly Usuarios SessionUser = new Usuarios();
+        protected readonly MySqlDbContext DbContext = new MySqlDbContext();
         
         protected void SetViewDatas()
         {
