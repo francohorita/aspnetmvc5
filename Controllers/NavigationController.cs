@@ -51,6 +51,19 @@ namespace aspnetmvc5.Controllers
 
         }
         
+        public ActionResult Alumnos()
+        {
+
+            ViewData["Title"] = "Alumnos";
+            SetViewDatas();
+            
+            /*1 admin 2 estudiante 3 profesor*/
+            var profesoresList = DbContext.Usuarios.Where(user => user.Tipo == 2).ToList();
+
+            return SessionUser.Mail == null ? (ActionResult) RedirectToAction("Login", "Navigation") : View(profesoresList);
+
+        }
+        
         public ActionResult CreateCarrera()
         {
 
@@ -130,6 +143,47 @@ namespace aspnetmvc5.Controllers
             materiaToView = DbContext.Materias.Find(Convert.ToInt32(Request.Query["Id"]));
 
             return SessionUser.Mail == null ? (ActionResult) RedirectToAction("Login", "Navigation") : View(materiaToView);
+
+        }
+        
+        public ActionResult CreateUsuario()
+        {
+
+            ViewData["Title"] = "Crear";
+            ViewData["SubTitle"] = "Nuevo Usuario";
+            SetViewDatas();
+
+            return SessionUser.Mail == null ? (ActionResult) RedirectToAction("Login", "Navigation") : View();
+
+        }
+        
+        public ActionResult EditUsuario()
+        {
+
+            ViewData["Title"] = "Editar";
+            ViewData["SubTitle"] = "Usuario";
+            SetViewDatas();
+            
+            Usuarios usuarioToEdit;
+            
+            usuarioToEdit = DbContext.Usuarios.Find(Convert.ToInt32(Request.Query["Id"]));
+
+            return SessionUser.Mail == null ? (ActionResult) RedirectToAction("Login", "Navigation") : View(usuarioToEdit);
+
+        }
+        
+        public ActionResult ShowUsuario()
+        {
+
+            ViewData["Title"] = "View";
+            ViewData["SubTitle"] = "Usuario";
+            SetViewDatas();
+            
+            Usuarios usuarioToView;
+            
+            usuarioToView = DbContext.Usuarios.Find(Convert.ToInt32(Request.Query["Id"]));
+
+            return SessionUser.Mail == null ? (ActionResult) RedirectToAction("Login", "Navigation") : View(usuarioToView);
 
         }
         

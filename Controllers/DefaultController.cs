@@ -13,6 +13,7 @@ namespace aspnetmvc5.Controllers
         {
             ViewData["AppName"] = "Doggo HS";
             ViewData["Authors"] = "Horita, Litardo & Ravinale";
+            ViewData["UserType"] = SessionUser.Tipo;
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
