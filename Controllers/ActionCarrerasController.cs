@@ -10,14 +10,14 @@ namespace aspnetmvc5.Controllers
         public ActionResult Delete()
         {
             
-            Carreras CarreraToRemove;
+            Carreras carreraToRemove;
             
-            CarreraToRemove = DbContext.Carreras.Find(Convert.ToInt32(Request.Query["Id"]));
-            DbContext.Carreras.Remove(CarreraToRemove);
+            carreraToRemove = DbContext.Carreras.Find(Convert.ToInt32(Request.Query["Id"]));
+            DbContext.Carreras.Remove(carreraToRemove);
             DbContext.SaveChanges();
             
             
-            return RedirectToAction("Carreras", "Navigation");
+            return SessionUser.Mail == null ? (ActionResult) RedirectToAction("Login", "Navigation") : RedirectToAction("Carreras", "Navigation");
 
         }
 
@@ -31,7 +31,21 @@ namespace aspnetmvc5.Controllers
             DbContext.Carreras.Add(carreraToCreate);
             DbContext.SaveChanges();
             
-            return RedirectToAction("Carreras", "Navigation");
+            return SessionUser.Mail == null ? (ActionResult) RedirectToAction("Login", "Navigation") : RedirectToAction("Carreras", "Navigation");
+            
+        }
+        
+        public ActionResult Edit()
+        {
+            
+            var carreraToEdit = new Carreras();
+            carreraToEdit.Id = Convert.ToInt32(Request.Form["Id"]);
+            carreraToEdit.Nombre = Request.Form["Nombre"];
+            DbContext.Carreras.Update(carreraToEdit);
+            DbContext.SaveChanges();
+            
+            return SessionUser.Mail == null ? (ActionResult) RedirectToAction("Login", "Navigation") : RedirectToAction("Carreras", "Navigation");
+            
         }
         
     }

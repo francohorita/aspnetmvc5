@@ -1,4 +1,6 @@
+using System;
 using System.Linq;
+using aspnetmvc5.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace aspnetmvc5.Controllers
@@ -49,7 +51,7 @@ namespace aspnetmvc5.Controllers
 
         }
         
-        public ActionResult CrearCarrera()
+        public ActionResult CreateCarrera()
         {
 
             ViewData["Title"] = "Crear";
@@ -57,6 +59,21 @@ namespace aspnetmvc5.Controllers
             SetViewDatas();
 
             return SessionUser.Mail == null ? (ActionResult) RedirectToAction("Login", "Navigation") : View();
+
+        }
+        
+        public ActionResult EditCarrera()
+        {
+
+            ViewData["Title"] = "Editar";
+            ViewData["SubTitle"] = "Carrera";
+            SetViewDatas();
+            
+            Carreras carreraToEdit;
+            
+            carreraToEdit = DbContext.Carreras.Find(Convert.ToInt32(Request.Query["Id"]));
+
+            return SessionUser.Mail == null ? (ActionResult) RedirectToAction("Login", "Navigation") : View(carreraToEdit);
 
         }
         
