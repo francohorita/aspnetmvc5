@@ -8,9 +8,10 @@ namespace aspnetmvc5.Controllers
     public class NavigationController : DefaultController
     {
         
-        public ActionResult Login()
+        public ActionResult Login(String message)
         {
             ViewData["Title"] = "Login";
+            ViewData["Error"] = message;
             SetViewDatas();
 
             return View();

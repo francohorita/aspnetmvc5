@@ -15,6 +15,12 @@
         <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
 
         <button class="btn btn-lg btn-custom btn-block" type="submit">Iniciar sesión</button>
+        
+        @if (ViewData["Error"] != null)
+        {
+            <div class="alert alert-danger" role="alert"> @ViewData["Error"] </div>
+        }
+        
         <p class="mt-5 mb-3 text-muted"><strong>@ViewData["AppName"]</strong> <br> @ViewData["Authors"] <br> <strong>&copy; 2018</strong></p>
 
     </form>

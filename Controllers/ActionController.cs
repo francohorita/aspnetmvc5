@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 
 namespace aspnetmvc5.Controllers
@@ -8,19 +9,27 @@ namespace aspnetmvc5.Controllers
         [HttpPost]
         public ActionResult Login()
         {
-            var loginUser = DbContext.Usuarios.First(
-                user => user.Mail == Request.Form["email"] && user.Password == Request.Form["password"]);
-
-            if (loginUser != null)
+            try
             {
-                SessionUser.Mail = loginUser.Mail;
-                SessionUser.Tipo = loginUser.Tipo;
+                var loginUser = DbContext.Usuarios.First(
+                    user => user.Mail == Request.Form["email"] && user.Password == Request.Form["password"]);
                 
-                return RedirectToAction("Carreras", "Navigation");   
+                if (loginUser != null)
+                {
+                    SessionUser.Mail = loginUser.Mail;
+                    SessionUser.Tipo = loginUser.Tipo;
+                
+                    return RedirectToAction("Carreras", "Navigation");
+                }
+                else
+                {
+                    return RedirectToAction("Login", "Navigation", new {Message = "Datos incorrectos."});
+                }
+                
             }
-            else
+            catch (InvalidOperationException e)
             {
-                return RedirectToAction("Login", "Navigation");
+                return RedirectToAction("Login", "Navigation", new {Message = "Datos incorrectos."});
             }
             
         }
