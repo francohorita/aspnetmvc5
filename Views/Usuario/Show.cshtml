@@ -7,7 +7,7 @@
       <h2 class="mt-5">@ViewData["Title"]</h2>
     </div>
     <div class="col-sm-4">
-      <a class="btn btn-secondary float-right mt-5" href="~/Navigation/Usuarios"><i class="fa fa-sign-out-alt"></i><span> Volver</span></a>
+      <a class="btn btn-secondary float-right mt-5" href="~/Navigation/@ViewBag.Section"><i class="fa fa-sign-out-alt"></i><span> Volver</span></a>
     </div>
   </div>
 
@@ -21,22 +21,60 @@
         <div class="card-header">Info</div>
 
         <div class="card-body">
-
+          
           <div class="form-group">
-            <label for="name">ID</label>
+            <label for="nombre">Id</label>
             <h5 class="form-control">@Model.Id</h5>
           </div>
-          
+
           <div class="form-group">
-            <label for="contact">Nombre:</label>
+            <label for="nombre">Nombre</label>
             <h5 class="form-control">@Model.Nombre</h5>
           </div>
-          
+
           <div class="form-group">
-            <label for="email">Creado</label>
-            <h5 class="form-control">@Model.Creado</h5>
+            <label for="apellido">Apellido</label>
+            <h5 class="form-control">@Model.Apellido</h5>
           </div>
-              
+
+          <div class="form-group">
+            <label for="dni">DNI</label>
+            <h5 class="form-control">@Model.Dni</h5>
+          </div>
+
+          <div class="form-group">
+            <label for="legajo">Legajo</label>
+            <h5 class="form-control">@Model.Legajo</h5>
+          </div>
+
+          <div class="form-group">
+            <label for="mail">Mail</label>
+            <h5 class="form-control">@Model.Mail</h5>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <h5 class="form-control">@Model.Password</h5>
+          </div>
+
+          <div class="form-group">
+            <label for="fechanac">Fecha de Nacimiento</label>
+            <h5 class="form-control">@Model.Fechanac</h5>
+          </div>
+
+          <div class="form-group">
+            <label for="ingreso">Fecha de Ingreso</label>
+            <h5 class="form-control">@Model.Ingreso</h5>
+          </div>
+
+          @if (ViewBag.MyUserType == "3")
+          {
+            <div class="form-group">
+              <label for="sueldo">Sueldo</label>
+              <h5 class="form-control">@Model.Sueldo</h5>
+            </div>
+          }
+
         </div>
             
       </div>

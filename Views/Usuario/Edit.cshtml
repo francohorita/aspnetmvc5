@@ -7,7 +7,7 @@
       <h2 class="mt-5">@ViewData["Title"]</h2>
     </div>
     <div class="col-sm-4">
-      <a class="btn btn-secondary float-right mt-5" href="~/Navigation/Usuarios"><i class="fa fa-sign-out-alt"></i><span> Volver</span></a>
+      <a class="btn btn-secondary float-right mt-5" href="~/Navigation/@ViewBag.Section"><i class="fa fa-sign-out-alt"></i><span> Volver</span></a>
     </div>
   </div>
 
@@ -28,8 +28,42 @@
               <label for="nombre">Nombre</label>
               <input type="text" class="form-control" name="nombre" value="@Model.Nombre" required>
             </div>
+            
+            <div class="form-group">
+              <label for="apellido">Apellido</label>
+              <input type="text" class="form-control" name="apellido" value="@Model.Apellido" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="dni">DNI</label>
+              <input type="text" class="form-control" name="dni" value="@Model.Dni" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="legajo">Legajo</label>
+              <input type="number" class="form-control" name="legajo" value="@Model.Legajo" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="mail">Mail</label>
+              <input type="email" class="form-control" name="mail" value="@Model.Mail" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" name="password" value="@Model.Password" required>
+            </div>
+            
+            @if (ViewBag.MyUserType == "3")
+            {
+              <div class="form-group">
+                <label for="sueldo">Sueldo</label>
+                <input type="number" class="form-control" name="sueldo" value="@Model.Sueldo" required>
+              </div>  
+            }
 
             <div class="form-group">
+              <input type="hidden" value="@ViewBag.MyUserType" name="myUserType">
               <button type="submit" name="Edit" class="btn btn-custom waves"><i class="fa fa-pen"></i> Editar</button>
               <input type="hidden" name="id" value="@Model.Id">
             </div>

@@ -9,9 +9,21 @@ namespace aspnetmvc5.Controllers
         
         public ActionResult Create()
         {
-
-            ViewData["Title"] = "Crear";
-            ViewData["SubTitle"] = "Nuevo Usuario";
+            
+            if (Request.Query["Tipo"] == "2")
+            {
+                ViewData["SubTitle"] = "Nuevo Alumno";
+                ViewBag.Section = "Alumnos";
+            }
+            else
+            {
+                ViewData["SubTitle"] = "Nuevo Profesor";
+                ViewBag.Section = "Profesores";
+            }
+            
+            ViewBag.MyUserType = Request.Query["Tipo"];
+            
+            ViewData["Title"] = "Crear";            
             SetViewDatas();
 
             return SessionUser.Mail == null ? (ActionResult) RedirectToAction("Login", "Navigation") : View();
@@ -21,13 +33,23 @@ namespace aspnetmvc5.Controllers
         public ActionResult Edit()
         {
 
+            if (Request.Query["Tipo"] == "2")
+            {
+                ViewData["SubTitle"] = "Editar Alumno";
+                ViewBag.Section = "Alumnos";
+            }
+            else
+            {
+                ViewData["SubTitle"] = "Editar Profesor";
+                ViewBag.Section = "Profesores";
+            }
+            
+            ViewBag.MyUserType = Request.Query["Tipo"];
+            
             ViewData["Title"] = "Editar";
-            ViewData["SubTitle"] = "Usuario";
             SetViewDatas();
-            
-            Usuarios usuarioToEdit;
-            
-            usuarioToEdit = DbContext.Usuarios.Find(Convert.ToInt32(Request.Query["Id"]));
+
+            Usuarios usuarioToEdit = DbContext.Usuarios.Find(Convert.ToInt32(Request.Query["Id"]));
 
             return SessionUser.Mail == null ? (ActionResult) RedirectToAction("Login", "Navigation") : View(usuarioToEdit);
 
@@ -36,13 +58,23 @@ namespace aspnetmvc5.Controllers
         public ActionResult Show()
         {
 
+            if (Request.Query["Tipo"] == "2")
+            {
+                ViewData["SubTitle"] = "Alumno";
+                ViewBag.Section = "Alumnos";
+            }
+            else
+            {
+                ViewData["SubTitle"] = "Profesor";
+                ViewBag.Section = "Profesores";
+            }
+            
+            ViewBag.MyUserType = Request.Query["Tipo"];
+            
             ViewData["Title"] = "View";
-            ViewData["SubTitle"] = "Usuario";
             SetViewDatas();
-            
-            Usuarios usuarioToView;
-            
-            usuarioToView = DbContext.Usuarios.Find(Convert.ToInt32(Request.Query["Id"]));
+
+            Usuarios usuarioToView = DbContext.Usuarios.Find(Convert.ToInt32(Request.Query["Id"]));
 
             return SessionUser.Mail == null ? (ActionResult) RedirectToAction("Login", "Navigation") : View(usuarioToView);
 
