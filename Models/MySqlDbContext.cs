@@ -26,7 +26,7 @@ namespace aspnetmvc5.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseMySql("server=sql10.freemysqlhosting.net;database=sql10253958;user=sql10253958;pwd=Rjd993MQTP;");
+                optionsBuilder.UseMySql("server=50.116.64.27;database=francoho_aspnetmvc5;user=francoho_aspnet;pwd=aspnetmvc5;");
             }
         }
 

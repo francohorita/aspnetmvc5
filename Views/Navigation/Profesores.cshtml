@@ -9,7 +9,7 @@
         <div class="col-sm-4">
             @if (ViewData["UserType"].Equals(1))
             {
-                <a class="btn btn-primary float-right mt-5" href="~/Navigation/CreateUsuario"><i class="fas fa-plus-circle"></i><span> Crear</span></a>
+                <a class="btn btn-primary float-right mt-5" href="~/Usuario/Create"><i class="fas fa-plus-circle"></i><span> Crear</span></a>
             }
         </div>
     </div>
@@ -55,8 +55,8 @@
                 @if (ViewData["UserType"].Equals(1))
                 {
                     <td>
-                        <a href="~/Navigation/ShowUsuario?id=@item.Id" class="btn btn-light"><i class="fa fa-eye"></i></a>
-                        <a href="~/Navigation/EditUsuario?id=@item.Id" class="btn btn-light"><i class="fa fa-pen"></i></a>
+                        <a href="~/Usuario/Show?id=@item.Id" class="btn btn-light"><i class="fa fa-eye"></i></a>
+                        <a href="~/Usuario/Edit?id=@item.Id" class="btn btn-light"><i class="fa fa-pen"></i></a>
                         <a href="~/ActionUsuario/Delete?id=@item.Id" class="btn btn-ligh-danger" onclick="return confirm('¿Seguro que desea eliminar el registro?')"><i class="fa fa-trash-alt"></i></a>
                     </td>
                 }

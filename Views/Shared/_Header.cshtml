@@ -13,19 +13,19 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
 
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item @((string) ViewData["Title"]=="Carreras" ? "active" : "")">
+        <li class="nav-item @((string) @ViewBag.Section=="Carreras" ? "active" : "")">
           <a class="nav-link" href="~/Navigation/Carreras">Carreras</a>
         </li>
-        <li class="nav-item @((string) ViewData["Title"]=="Materias" ? "active" : "")">
+        <li class="nav-item @((string) @ViewBag.Section=="Materias" ? "active" : "")">
           <a class="nav-link" href="~/Navigation/Materias">Materias</a>
         </li>
-        <li class="nav-item @((string) ViewData["Title"]=="Profesores" ? "active" : "")">
+        <li class="nav-item @((string) @ViewBag.Section=="Profesores" ? "active" : "")">
           <a class="nav-link" href="~/Navigation/Profesores">Profesores</a>
         </li>
         
         @if (ViewData["UserType"].Equals(3) || ViewData["UserType"].Equals(1))
         {
-          <li class="nav-item @((string) ViewData["Title"] == "Alumnos" ? "active" : "")">
+          <li class="nav-item @((string) @ViewBag.Section == "Alumnos" ? "active" : "")">
             <a class="nav-link" href="~/Navigation/Alumnos">Alumnos</a>
           </li>
         }
