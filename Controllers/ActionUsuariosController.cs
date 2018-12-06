@@ -79,7 +79,7 @@ namespace aspnetmvc5.Controllers
 
             if (Request.Form["myUserType"] == "3")
             {
-                var checkLink = DbContext.MateriasProfesores.FirstOrDefault(link => link.UsuarioId == Request.Form["UsuarioId"] && link.MateriaId == Request.Form["MateriaId"]);
+                var checkLink = DbContext.MateriasProfesores.FirstOrDefault(link => link.UsuarioId == Convert.ToInt32(Request.Form["UsuarioId"]) && link.MateriaId == Convert.ToInt32(Request.Form["MateriaId"]));
                 if (checkLink == null)
                 {
                     var usuarioToLink = new MateriasProfesores
@@ -93,7 +93,7 @@ namespace aspnetmvc5.Controllers
             }
             else
             {
-                var checkLink = DbContext.AlumnosMaterias.FirstOrDefault(link => link.UsuarioId == Request.Form["UsuarioId"] && link.MateriaId == Request.Form["MateriaId"]);
+                var checkLink = DbContext.AlumnosMaterias.FirstOrDefault(link => link.UsuarioId == Convert.ToInt32(Request.Form["UsuarioId"]) && link.MateriaId == Convert.ToInt32(Request.Form["MateriaId"]));
                 if (checkLink == null)
                 {
                     var usuarioToLink = new AlumnosMaterias

@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using aspnetmvc5.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -48,6 +49,22 @@ namespace aspnetmvc5.Controllers
             materiaToView = DbContext.Materias.Find(Convert.ToInt32(Request.Query["Id"]));
 
             return SessionUser.Mail == null ? (ActionResult) RedirectToAction("Login", "Navigation") : View(materiaToView);
+
+        }
+        
+        public ActionResult Link()
+        {
+
+            ViewData["Title"] = "Link";
+            ViewData["SubTitle"] = "Materia";
+            ViewBag.Section = "Materias";
+            SetViewDatas();
+            
+            var carrerasList = DbContext.Carreras.ToList();
+
+            var carrerasConMateria = new CarrerasConMateria {Carreras = carrerasList, MateriaId = Request.Query["Id"]};
+
+            return SessionUser.Mail == null ? (ActionResult) RedirectToAction("Login", "Navigation") : View(carrerasConMateria);
 
         }
         

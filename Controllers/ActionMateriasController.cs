@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using aspnetmvc5.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -44,6 +45,28 @@ namespace aspnetmvc5.Controllers
             DbContext.Materias.Update(materiaToEdit);
             DbContext.SaveChanges();
             
+            return SessionUser.Mail == null ? (ActionResult) RedirectToAction("Login", "Navigation") : RedirectToAction("Materias", "Navigation");
+            
+        }
+        
+        public ActionResult Link()
+        {
+
+            var checkLink = DbContext.CarrerasMaterias.FirstOrDefault(link => link.MateriaId == Convert.ToInt32(Request.Form["MateriaId"]) && link.CarreraId == Convert.ToInt32(Request.Form["CarreraId"]));
+            if (checkLink == null)
+            {
+                var carreraToLink = new CarrerasMaterias
+                {
+                    MateriaId = Convert.ToInt32(Request.Form["MateriaId"]),
+                    CarreraId = Convert.ToInt32(Request.Form["CarreraId"]),
+                    Creado = DateTime.Now
+                };
+                DbContext.CarrerasMaterias.Add(carreraToLink);
+            }
+
+            
+            DbContext.SaveChanges();
+
             return SessionUser.Mail == null ? (ActionResult) RedirectToAction("Login", "Navigation") : RedirectToAction("Materias", "Navigation");
             
         }

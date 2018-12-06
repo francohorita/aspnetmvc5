@@ -1,0 +1,51 @@
+@model CarrerasConMateria
+
+<main class="container">
+  
+  <div class="row">
+    <div class="col-sm-8">
+      <h2 class="mt-5">@ViewData["Title"]</h2>
+    </div>
+    <div class="col-sm-4">
+      <a class="btn btn-secondary float-right mt-5" href="~/Navigation/Materias"><i class="fa fa-sign-out-alt"></i><span> Volver</span></a>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="row justify-content-center">
+    <div class="col-md-12">
+
+      <div class="card">
+
+        <div class="card-header">@ViewData["SubTitle"]</div>
+
+        <div class="card-body">
+
+          <form action="~/ActionMaterias/Link" method="post">
+
+            <div class="form-group">
+              <label for="carrera">Carrera</label>
+              <select id="carrera" name="carreraId" class="form-control">
+                @foreach (var item in Model.Carreras)
+                {
+                  <option value="@item.Id">@item.Nombre</option>
+                }
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <button type="submit" name="Edit" class="btn btn-custom waves"><i class="fas fa-link"></i> Enlazar</button>
+              <input type="hidden" name="materiaId" value="@Model.MateriaId">
+            </div>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+  
+</main>
