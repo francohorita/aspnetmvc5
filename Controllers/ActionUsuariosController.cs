@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using aspnetmvc5.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -66,6 +67,47 @@ namespace aspnetmvc5.Controllers
             DbContext.Usuarios.Update(usuarioToCreate);
             DbContext.SaveChanges();
             
+            if (Request.Form["myUserType"] == "3")
+                return SessionUser.Mail == null ? (ActionResult) RedirectToAction("Login", "Navigation") : RedirectToAction("Profesores", "Navigation");    
+            else
+                return SessionUser.Mail == null ? (ActionResult) RedirectToAction("Login", "Navigation") : RedirectToAction("Alumnos", "Navigation");
+            
+        }
+        
+        public ActionResult Link()
+        {
+
+            if (Request.Form["myUserType"] == "3")
+            {
+                var checkLink = DbContext.MateriasProfesores.FirstOrDefault(link => link.UsuarioId == Request.Form["UsuarioId"] && link.MateriaId == Request.Form["MateriaId"]);
+                if (checkLink == null)
+                {
+                    var usuarioToLink = new MateriasProfesores
+                    {
+                        UsuarioId = Convert.ToInt32(Request.Form["UsuarioId"]),
+                        MateriaId = Convert.ToInt32(Request.Form["MateriaId"]),
+                        Creado = DateTime.Now
+                    };
+                    DbContext.MateriasProfesores.Add(usuarioToLink);
+                }
+            }
+            else
+            {
+                var checkLink = DbContext.AlumnosMaterias.FirstOrDefault(link => link.UsuarioId == Request.Form["UsuarioId"] && link.MateriaId == Request.Form["MateriaId"]);
+                if (checkLink == null)
+                {
+                    var usuarioToLink = new AlumnosMaterias
+                    {
+                        UsuarioId = Convert.ToInt32(Request.Form["UsuarioId"]),
+                        MateriaId = Convert.ToInt32(Request.Form["MateriaId"]),
+                        Creado = DateTime.Now
+                    };
+                    DbContext.AlumnosMaterias.Add(usuarioToLink);
+                }
+            }
+            
+            DbContext.SaveChanges();
+
             if (Request.Form["myUserType"] == "3")
                 return SessionUser.Mail == null ? (ActionResult) RedirectToAction("Login", "Navigation") : RedirectToAction("Profesores", "Navigation");    
             else

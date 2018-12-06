@@ -9,25 +9,18 @@ namespace aspnetmvc5.Controllers
         [HttpPost]
         public ActionResult Login()
         {
-            try
+
+            var loginUser = DbContext.Usuarios.FirstOrDefault(
+                user => user.Mail == Request.Form["email"] && user.Password == Request.Form["password"]);
+            
+            if (loginUser != null)
             {
-                var loginUser = DbContext.Usuarios.First(
-                    user => user.Mail == Request.Form["email"] && user.Password == Request.Form["password"]);
-                
-                if (loginUser != null)
-                {
-                    SessionUser.Mail = loginUser.Mail;
-                    SessionUser.Tipo = loginUser.Tipo;
-                
-                    return RedirectToAction("Carreras", "Navigation");
-                }
-                else
-                {
-                    return RedirectToAction("Login", "Navigation", new {Message = "Datos incorrectos."});
-                }
-                
+                SessionUser.Mail = loginUser.Mail;
+                SessionUser.Tipo = loginUser.Tipo;
+            
+                return RedirectToAction("Carreras", "Navigation");
             }
-            catch (InvalidOperationException e)
+            else
             {
                 return RedirectToAction("Login", "Navigation", new {Message = "Datos incorrectos."});
             }
