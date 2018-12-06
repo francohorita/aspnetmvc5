@@ -13,8 +13,11 @@ namespace aspnetmvc5.Controllers
             var usuarioToRemove = DbContext.Usuarios.Find(Convert.ToInt32(Request.Query["Id"]));
             DbContext.Usuarios.Remove(usuarioToRemove);
             DbContext.SaveChanges();
-            
-            return SessionUser.Mail == null ? (ActionResult) RedirectToAction("Login", "Navigation") : RedirectToAction("Materias", "Navigation");
+
+            if (Request.Query["Tipo"] == "3")
+                return SessionUser.Mail == null ? (ActionResult) RedirectToAction("Login", "Navigation") : RedirectToAction("Profesores", "Navigation");
+            else
+                return SessionUser.Mail == null ? (ActionResult) RedirectToAction("Login", "Navigation") : RedirectToAction("Alumnos", "Navigation");
 
         }
 
