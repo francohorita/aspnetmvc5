@@ -7,7 +7,10 @@
             <h1 class="mt-5">@ViewData["Title"]</h1>
         </div>
         <div class="col-sm-4">
+        @if (ViewData["UserType"].Equals(1))
+        {
             <a class="btn btn-primary float-right mt-5" href="~/Materia/Create"><i class="fas fa-plus-circle"></i><span> Crear</span></a>
+        }
         </div>
     </div>
 
